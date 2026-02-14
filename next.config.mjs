@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: false,
+    unoptimized: true,
   },
-  output: 'standalone',
+  output: 'export',
 };
 
 export default nextConfig;
