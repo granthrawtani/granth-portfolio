@@ -105,9 +105,9 @@ export default function Experience() {
         transition={{ duration: 0.6 }}
         className="max-w-5xl mx-auto"
       >
-        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-tight">Experience</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-[-0.02em]">Experience</h1>
 
-        <p className="text-gray-500 text-base leading-relaxed mb-12 max-w-[600px]">
+        <p className="text-gray-500 text-base leading-[1.7] mb-12 max-w-[600px]">
           Finance, strategy, and market expansion across global environments.
         </p>
 
@@ -120,15 +120,16 @@ export default function Experience() {
               <motion.div
                 key={exp.id}
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -4, scale: 1.02 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                whileHover={{ y: -4 }}
                 className={`
-                  border border-retro-border rounded-xl cursor-pointer
+                  border rounded-xl cursor-pointer
                   transition-all duration-200
                   flex flex-col items-center justify-center
                   p-8 min-h-[200px]
-                  ${isHovered ? 'bg-gray-50 shadow-lg' : 'bg-white'}
+                  ${isHovered ? 'bg-gray-50 shadow-card-hover border-retro-border' : 'bg-white shadow-card border-retro-border/80'}
                 `}
                 onMouseEnter={() => setHoveredId(exp.id)}
                 onMouseLeave={() => setHoveredId(null)}
@@ -173,9 +174,9 @@ export default function Experience() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-tight">Investment Notes</h2>
+          <h2 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-[-0.02em]">Investment Notes</h2>
 
-          <p className="text-gray-500 text-base leading-relaxed mb-16 max-w-[600px]">
+          <p className="text-gray-500 text-base leading-[1.7] mb-16 max-w-[600px]">
             Capital allocation, risk management, and long-term portfolio strategy.
           </p>
 
@@ -355,7 +356,7 @@ export default function Experience() {
                     setSelectedExperienceId(null);
                     setSelectedInvestmentId(null);
                   }}
-                  className="hover:bg-white/10 p-1 rounded transition-colors"
+                  className="hover:bg-white/10 p-2 rounded transition-colors duration-200"
                 >
                   <X size={16} className="text-white" strokeWidth={1.5} />
                 </button>
@@ -440,7 +441,7 @@ export default function Experience() {
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
                         The Challenge
                       </h2>
-                      <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-3">
+                      <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-3">
                         <p>
                           Ulysse Nardin, a Swiss luxury watchmaker with centuries of heritage, sought to expand into African markets while preserving its positioning as an exclusive, high-end brand.
                         </p>
@@ -460,7 +461,7 @@ export default function Experience() {
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
                         The Approach
                       </h2>
-                      <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-3">
+                      <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-3">
                         <p>
                           I conducted stakeholder interviews with internal leaders across marketing, HR, and management to understand brand priorities, positioning constraints, and operational requirements for international expansion.
                         </p>
@@ -483,7 +484,7 @@ export default function Experience() {
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
                         The Impact
                       </h2>
-                      <div className="space-y-4 text-[16px] leading-[1.8] text-gray-700 font-light">
+                      <div className="space-y-4 text-[16px] leading-[1.85] text-gray-700 font-light">
                         <p>
                           • Identified high-potential retail partners that aligned with Ulysse Nardin's brand positioning and exclusivity standards, providing leadership with a refined shortlist for expansion discussions.
                         </p>
@@ -1072,7 +1073,7 @@ export default function Experience() {
                     </p>
                     <div className="w-full h-px bg-gray-200 mb-12" />
 
-                    <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-12">
+                    <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-12">
                       <p>
                         The investment environment in 2026 reflects a shift toward more disciplined capital allocation. Growth remains steady, inflation has moderated but not fully normalized, and interest rates are likely to remain structurally higher than the prior decade. The liquidity-driven regime of the 2010s has given way to a more balanced landscape where income, selectivity, and resilience matter more than broad market exposure. In this context, the goal of portfolio construction is not maximizing short-term upside, but building a framework capable of compounding capital across multiple macro environments.
                       </p>
@@ -1203,7 +1204,7 @@ export default function Experience() {
                     </p>
                     <div className="w-full h-px bg-gray-200 mb-12" />
 
-                    <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-12">
+                    <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-12">
                       <p>
                         Emerging markets present a compelling but complex opportunity set for long-term investors. They offer higher structural growth, favorable demographics, and expanding middle-class consumption, yet they also introduce layers of risk that are often underestimated by traditional portfolio frameworks. For investors allocating capital globally, success in emerging markets is less about identifying the highest growth region and more about managing the unique risks that accompany that growth. A disciplined risk management framework is therefore essential.
                       </p>
@@ -1359,7 +1360,7 @@ export default function Experience() {
                     </p>
                     <div className="w-full h-px bg-gray-200 mb-12" />
 
-                    <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-12">
+                    <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-12">
                       <p>
                         The relationship between interest rates and inflation sits at the center of long-term portfolio construction. Over the past decade, investors operated in a world defined by low inflation and near-zero rates, which rewarded duration-heavy assets and aggressive growth exposure. That regime has shifted. The current environment is characterized by structurally higher rates, more persistent inflation dynamics, and greater macro uncertainty. For long-term investors, understanding how these forces interact is essential for building resilient portfolios.
                       </p>

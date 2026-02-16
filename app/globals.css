@@ -16,7 +16,20 @@
     font-family: 'Inter', 'SF Pro Display', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
   }
+}
+
+/* Branded text selection */
+::selection {
+  background: rgba(34, 197, 94, 0.12);
+  color: inherit;
+}
+
+/* Safe area for notched devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 @layer utilities {

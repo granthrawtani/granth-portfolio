@@ -69,7 +69,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors z-10"
+              className="absolute top-5 right-5 p-2.5 hover:bg-gray-100 rounded-full transition-colors duration-200 z-10"
             >
               <X size={20} />
             </button>

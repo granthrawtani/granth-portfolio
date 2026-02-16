@@ -5,8 +5,22 @@ import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 
 const projects = [
-  { id: 1, title: 'AI Stock Predictor', description: 'Machine learning platform' },
-  { id: 2, title: 'Kuzo', description: 'Mission-driven apparel brand' },
+  {
+    id: 1,
+    title: 'AI Stock Predictor',
+    positioning: 'ML-powered market forecasting platform',
+    description: 'Designed and built a prediction engine that processes real-time market data, applies supervised learning models, and generates probabilistic forecasts with confidence intervals.',
+    role: 'Solo Builder — Architecture, ML Pipeline, Data Engineering',
+    year: '2025',
+  },
+  {
+    id: 2,
+    title: 'Kuzo',
+    positioning: 'Mission-driven apparel brand, built from zero',
+    description: 'Built and launched an apparel brand from concept to execution — leading brand strategy, supplier sourcing, operations, and go-to-market across digital channels.',
+    role: 'Founder — Brand Strategy, Operations, Marketing',
+    year: '2023',
+  },
 ];
 
 export default function Projects() {
@@ -34,10 +48,10 @@ export default function Projects() {
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-tight">Projects</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-[-0.02em]">Projects</h1>
 
-        <p className="text-gray-500 text-base leading-relaxed mb-12 max-w-[600px]">
-          Building platforms and brands that create value.
+        <p className="text-gray-500 text-base leading-[1.7] mb-12 max-w-[600px]">
+          Things I've built — from concept through execution.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
@@ -48,26 +62,42 @@ export default function Projects() {
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -4, scale: 1.02 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                whileHover={{ y: -4 }}
                 className={`
-                  border border-retro-border rounded-xl cursor-pointer
+                  border rounded-xl cursor-pointer
                   transition-all duration-200
-                  flex flex-col items-center justify-center
-                  p-8 min-h-[200px]
-                  ${isHovered ? 'bg-gray-50 shadow-lg' : 'bg-white'}
+                  flex flex-col justify-between
+                  p-6 md:p-8 min-h-[240px]
+                  ${isHovered ? 'bg-gray-50 shadow-card-hover border-retro-border' : 'bg-white shadow-card border-retro-border/80'}
                 `}
                 onMouseEnter={() => setHoveredId(project.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => setSelectedProjectId(project.id)}
               >
-                <h3 className="text-sm font-medium text-retro-text text-center mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-xs text-gray-400 text-center">
-                  {project.description}
-                </p>
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-base font-semibold text-retro-text tracking-tight">
+                      {project.title}
+                    </h3>
+                    <span className="text-[10px] font-mono text-gray-400 tracking-wider">
+                      {project.year}
+                    </span>
+                  </div>
+                  <p className="text-xs text-retro-green font-medium font-mono uppercase tracking-wider mb-3">
+                    {project.positioning}
+                  </p>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-retro-border">
+                  <p className="text-[11px] text-gray-400 font-mono tracking-wide">
+                    {project.role}
+                  </p>
+                </div>
               </motion.div>
             );
           })}
@@ -116,7 +146,7 @@ export default function Projects() {
                 </span>
                 <button
                   onClick={() => setSelectedProjectId(null)}
-                  className="hover:bg-white/10 p-1 rounded transition-colors"
+                  className="hover:bg-white/10 p-2 rounded transition-colors duration-200"
                 >
                   <X size={16} className="text-white" strokeWidth={1.5} />
                 </button>
@@ -139,10 +169,10 @@ export default function Projects() {
                       className="mb-8"
                     >
                       <p className="text-xs uppercase tracking-widest text-gray-500 font-light">
-                        2025 — Machine Learning + Financial Strategy
+                        2025 — Solo Build
                       </p>
                       <p className="text-xs uppercase tracking-widest text-gray-500 font-light mt-1">
-                        AI Stock Predictor
+                        Architecture · ML Pipeline · Data Engineering
                       </p>
                     </motion.div>
 
@@ -153,7 +183,7 @@ export default function Projects() {
                       transition={{ duration: 0.4, delay: 0.15 }}
                       className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
-                      Building intelligence for market prediction.
+                      Built an ML platform for market prediction.
                     </motion.h1>
 
                     {/* Subtitle */}
@@ -174,7 +204,7 @@ export default function Projects() {
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
-                    {/* The Challenge */}
+                    {/* The Problem */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -182,19 +212,16 @@ export default function Projects() {
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
-                        The Challenge
+                        The Problem
                       </h2>
-                      <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-3">
+                      <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-3">
                         <p>
-                          Financial markets generate vast amounts of data, but translating that data into actionable predictions requires more than just statistical analysis. It requires understanding market structure, identifying signal from noise, and building systems that can adapt to changing conditions.
-                        </p>
-                        <p>
-                          The challenge was developing a machine learning platform capable of processing real-time market data, extracting meaningful patterns, and generating probabilistic forecasts that could support informed investment decisions.
+                          Markets generate massive amounts of data. Translating that into actionable predictions requires more than statistical analysis — it requires understanding market structure, separating signal from noise, and building systems that adapt to changing conditions.
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* The Approach */}
+                    {/* What I Built */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -202,22 +229,19 @@ export default function Projects() {
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
-                        The Approach
+                        What I Built
                       </h2>
-                      <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-3">
+                      <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-3">
                         <p>
-                          I designed and built a stock prediction platform that combines historical price data, technical indicators, and machine learning models to forecast price movements. The system integrates multiple data sources, processes market information in real-time, and applies predictive algorithms trained on historical patterns.
+                          A stock prediction platform that combines historical price data, technical indicators, and supervised learning models to forecast price movements. The system integrates multiple data sources, processes market information in real-time, and applies algorithms trained on historical patterns.
                         </p>
                         <p>
-                          The platform uses supervised learning techniques to identify correlations between market indicators and future price action. Models are continuously retrained on recent data to adapt to evolving market dynamics, ensuring predictions remain relevant across different market regimes.
-                        </p>
-                        <p>
-                          Beyond prediction accuracy, the platform emphasizes interpretability and risk management. Each forecast is accompanied by confidence intervals and risk metrics, allowing users to make decisions based on probabilistic outcomes rather than binary predictions.
+                          Models retrain continuously on recent data to adapt to evolving market dynamics. Each forecast includes confidence intervals and risk metrics — designed for probabilistic decision-making, not binary predictions.
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* The Impact */}
+                    {/* Outcome */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -225,21 +249,12 @@ export default function Projects() {
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
-                        The Impact
+                        Outcome
                       </h2>
-                      <div className="space-y-4 text-[16px] leading-[1.8] text-gray-700 font-light">
-                        <p>
-                          • Developed a functional ML platform capable of processing market data and generating predictive insights
-                        </p>
-                        <p>
-                          • Integrated real-time data pipelines with machine learning workflows for continuous model training
-                        </p>
-                        <p>
-                          • Built a system that balances prediction accuracy with interpretability and risk awareness
-                        </p>
-                        <p>
-                          • Gained hands-on experience in financial modeling, data engineering, and applied machine learning
-                        </p>
+                      <div className="space-y-4 text-[16px] leading-[1.85] text-gray-700 font-light">
+                        <p>• Functional ML platform processing live market data and generating predictive insights</p>
+                        <p>• Real-time data pipelines integrated with continuous model retraining</p>
+                        <p>• System designed around interpretability and risk awareness, not just accuracy</p>
                       </div>
                     </motion.div>
 
@@ -271,10 +286,10 @@ export default function Projects() {
                       className="mb-8"
                     >
                       <p className="text-xs uppercase tracking-widest text-gray-500 font-light">
-                        2023 — Brand Building + Team Leadership
+                        2023 — Founder
                       </p>
                       <p className="text-xs uppercase tracking-widest text-gray-500 font-light mt-1">
-                        Kuzo Clothing
+                        Brand Strategy · Operations · Go-to-Market
                       </p>
                     </motion.div>
 
@@ -285,7 +300,7 @@ export default function Projects() {
                       transition={{ duration: 0.4, delay: 0.15 }}
                       className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
-                      Built a mission-driven apparel brand.
+                      Launched an apparel brand from zero.
                     </motion.h1>
 
                     {/* Subtitle */}
@@ -306,7 +321,7 @@ export default function Projects() {
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
-                    {/* The Challenge */}
+                    {/* The Problem */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -314,19 +329,16 @@ export default function Projects() {
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
-                        The Challenge
+                        The Problem
                       </h2>
-                      <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-3">
+                      <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-3">
                         <p>
-                          Launching a new apparel brand in a saturated market required more than product development. It demanded clear brand positioning, operational efficiency, and the ability to connect with an audience that shared the brand's values.
-                        </p>
-                        <p>
-                          The challenge was building Kuzo from concept to execution: defining the brand identity, sourcing quality materials, managing production, and creating a go-to-market strategy that resonated with our target audience.
+                          The apparel market is saturated. Launching a new brand required more than product — it demanded clear positioning, operational precision, and a narrative that connected with a real audience.
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* The Approach */}
+                    {/* What I Did */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -334,22 +346,19 @@ export default function Projects() {
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
-                        The Approach
+                        What I Did
                       </h2>
-                      <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-3">
+                      <div className="text-[16px] leading-[1.85] text-gray-700 font-light space-y-3">
                         <p>
-                          I led a small team to build Kuzo as a mission-driven brand focused on quality, sustainability, and purpose. We developed a clear brand narrative that connected with our audience's values, emphasizing craftsmanship and ethical production.
+                          Led a small team to build Kuzo from scratch. Defined brand identity, developed the product line, sourced suppliers, and managed end-to-end operations — from quality control and inventory to pricing and logistics.
                         </p>
                         <p>
-                          I managed end-to-end operations including supplier sourcing, quality control, inventory management, and logistics. This involved coordinating across vendors, negotiating pricing, and ensuring product delivery timelines aligned with launch schedules.
-                        </p>
-                        <p>
-                          On the marketing side, I led digital campaigns across social media, email, and content platforms. We built a community around the brand, engaging customers through storytelling and transparent communication about our mission and values.
+                          Ran digital marketing across social media, email, and content. Built community through storytelling and transparent communication about the brand's mission.
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* The Impact */}
+                    {/* Outcome */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -357,21 +366,12 @@ export default function Projects() {
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
-                        The Impact
+                        Outcome
                       </h2>
-                      <div className="space-y-4 text-[16px] leading-[1.8] text-gray-700 font-light">
-                        <p>
-                          • Launched a mission-driven apparel brand from concept to market
-                        </p>
-                        <p>
-                          • Built and led a small team through brand development, production, and marketing
-                        </p>
-                        <p>
-                          • Managed supplier relationships and operational logistics across the full product lifecycle
-                        </p>
-                        <p>
-                          • Gained hands-on experience in entrepreneurship, branding, and team leadership
-                        </p>
+                      <div className="space-y-4 text-[16px] leading-[1.85] text-gray-700 font-light">
+                        <p>• Took a brand from concept to market — product, operations, and launch</p>
+                        <p>• Built and managed a team through the full brand lifecycle</p>
+                        <p>• Owned supplier relationships, pricing, and operational logistics end-to-end</p>
                       </div>
                     </motion.div>
 
@@ -390,7 +390,7 @@ export default function Projects() {
                       transition={{ duration: 0.4, delay: 0.5 }}
                       className="text-xs uppercase tracking-[0.2em] text-gray-400 font-light text-center"
                     >
-                      Kuzo Clothing — 2023
+                      Kuzo — 2023
                     </motion.p>
                   </div>
                 ) : (

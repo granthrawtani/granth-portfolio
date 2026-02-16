@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
 import Image from 'next/image';
 
+const BLUR_DATA_URL = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKAAoDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQIDBv/EACIQAAICAgICAgMAAAAAAAAAAAABAgMEEQUhEjFBURMiYf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A0nJ8xLHx3ZCEeT4+KcsezKlvxWl19gVXzHKW5FuyUpy+WBP/9k=';
+
 const timelineItems = [
   {
     id: 1,
@@ -49,6 +51,8 @@ const timelineItems = [
   },
 ];
 
+const viewport = { once: true, amount: 0.3 };
+
 export default function About() {
   return (
     <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
@@ -58,23 +62,26 @@ export default function About() {
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-tight">About</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-[-0.02em]">About</h1>
 
         {/* About Me Section */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-24">
           {/* Photo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.5 }}
           >
-            <div className="aspect-[3/4] w-full max-w-md border border-retro-border rounded-3xl bg-white overflow-hidden">
+            <div className="aspect-[3/4] w-full max-w-md border border-retro-border rounded-3xl bg-white overflow-hidden shadow-card">
               <Image
                 src="/profile.jpg"
                 alt="Granth Rawtani"
                 width={500}
-                height={500}
+                height={667}
                 className="w-full h-full object-cover"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
                 priority
               />
             </div>
@@ -83,11 +90,12 @@ export default function About() {
           {/* About Me Text */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center"
           >
-            <div className="text-gray-600 text-base md:text-lg leading-relaxed space-y-5 md:space-y-6">
+            <div className="text-gray-600 text-base md:text-lg leading-[1.7] space-y-5 md:space-y-6">
               <p>
                 I'm Granth Rawtani. I grew up between India and Congo with my parents, my brother, and our golden retriever, moving frequently and experiencing different cultures from a young age. That upbringing gave me a global perspective, strong adaptability, and a natural curiosity about how things work and how they can be improved.
               </p>
@@ -105,12 +113,26 @@ export default function About() {
         </div>
 
         {/* Separator Line */}
-        <div className="border-t border-retro-border my-10 md:my-16" />
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={viewport}
+          transition={{ duration: 0.6 }}
+          className="border-t border-gray-300/50 my-10 md:my-16 origin-left"
+        />
 
         {/* Timeline Section */}
         <div>
-          <h2 className="text-xl md:text-2xl font-normal text-retro-green mb-8 md:mb-12 tracking-tight">Timeline</h2>
-          
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.4 }}
+            className="text-xl md:text-2xl font-normal text-retro-green mb-8 md:mb-12 tracking-tight"
+          >
+            Timeline
+          </motion.h2>
+
           <div className="relative">
           {/* Vertical Line */}
           <div className="absolute left-5 md:left-8 top-0 bottom-0 w-0.5 bg-retro-border" />
@@ -122,8 +144,9 @@ export default function About() {
                 <motion.div
                   key={item.id}
                   initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="relative pl-16 md:pl-24"
                 >
                   {/* Icon Marker */}
@@ -147,7 +170,7 @@ export default function About() {
                       <span>{item.date}</span>
                     </div>
                     {item.description && (
-                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                      <p className="text-gray-600 leading-[1.7]">{item.description}</p>
                     )}
                   </div>
                 </motion.div>
@@ -160,12 +183,13 @@ export default function About() {
         {/* My Journey Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.5 }}
           className="mt-16 mb-12 md:mt-32 md:mb-24"
         >
-          <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-tight">My Journey</h1>
-          <div className="text-gray-600 text-base md:text-lg leading-relaxed space-y-5 md:space-y-6">
+          <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-[-0.02em]">My Journey</h1>
+          <div className="text-gray-600 text-base md:text-lg leading-[1.7] space-y-5 md:space-y-6">
             <p>
               I grew up around business.
             </p>
@@ -208,8 +232,9 @@ export default function About() {
             <p>
               Today, I sit at the intersection of: management, entrepreneurship, and investments.
             </p>
-            <p>
-              My goal is simple: learn fast, build faster, and eventually scale companies that matter.
+            <p className="mt-3 md:mt-4 text-gray-400 italic">
+              A simple idea I come back to often:<br />
+              "Success is not just about making money. It's about making a difference."
             </p>
           </div>
         </motion.div>

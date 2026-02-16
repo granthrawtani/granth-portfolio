@@ -19,6 +19,10 @@ const config: Config = {
         mono: ['IBM Plex Mono', 'JetBrains Mono', 'monospace'],
         sans: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
       },
+      boxShadow: {
+        'card': '0 4px 24px -4px rgba(0,0,0,0.06)',
+        'card-hover': '0 8px 32px -8px rgba(0,0,0,0.1)',
+      },
     },
   },
   plugins: [],

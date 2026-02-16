@@ -27,7 +27,7 @@ export default function Contact() {
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-tight">Contact</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-[-0.02em]">Contact</h1>
 
         <div className="space-y-8 max-w-xl">
           {contacts.map((contact, index) => {
@@ -37,16 +37,17 @@ export default function Contact() {
                 key={contact.label}
                 href={contact.href}
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-4 text-retro-text hover:text-retro-green transition-colors group"
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                className="flex items-center gap-4 text-retro-text hover:text-retro-green transition-colors duration-200 group min-h-[44px]"
               >
                 <Icon size={20} strokeWidth={1.5} />
                 <div>
                   <div className="text-sm text-gray-500 font-mono tracking-wider uppercase">
                     {contact.label}
                   </div>
-                  <div className="text-lg group-hover:underline">{contact.value}</div>
+                  <div className="text-lg group-hover:underline underline-offset-4 decoration-retro-green/40">{contact.value}</div>
                 </div>
               </motion.a>
             );
