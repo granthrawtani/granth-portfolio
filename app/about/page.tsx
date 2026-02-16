@@ -188,7 +188,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="mt-16 mb-12 md:mt-32 md:mb-24"
         >
-          <h2 className="text-xl md:text-2xl font-normal text-retro-green mb-8 md:mb-12 tracking-tight">My Journey</h2>
+          <h2 className="text-xl md:text-2xl font-normal text-retro-text mb-8 md:mb-12 tracking-tight">My Journey</h2>
           <div className="text-gray-600 text-base md:text-lg leading-[1.7] space-y-5 md:space-y-6">
             <p>
               I grew up around business.
