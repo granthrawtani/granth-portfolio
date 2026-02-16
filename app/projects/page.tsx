@@ -27,20 +27,20 @@ export default function Projects() {
   }, [selectedProjectId]);
 
   return (
-    <div className="min-h-screen px-16 py-24">
+    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-5xl font-normal text-retro-text mb-4 tracking-tight">Projects</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-tight">Projects</h1>
 
         <p className="text-gray-500 text-base leading-relaxed mb-12 max-w-[600px]">
           Building platforms and brands that create value.
         </p>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {projects.map((project, index) => {
             const isHovered = hoveredId === project.id;
 
@@ -94,19 +94,14 @@ export default function Projects() {
               animate={{ opacity: 1, x: '-50%', y: 0 }}
               exit={{ opacity: 0, x: '-50%', y: '120%' }}
               transition={{ duration: 0.55, ease: 'easeOut' }}
-              className="fixed z-50 bg-white overflow-hidden"
+              className="fixed z-50 bg-white overflow-hidden w-full md:w-[98vw] md:max-w-[1800px] h-[95vh] md:h-[88vh] rounded-t-2xl md:rounded-t-[18px] shadow-2xl"
               style={{
                 left: '50%',
                 bottom: 0,
-                width: '98vw',
-                maxWidth: '1800px',
-                height: '88vh',
-                borderRadius: '18px 18px 0 0',
-                boxShadow: '0 8px 40px rgba(0, 0, 0, 0.15)',
               }}
             >
               {/* Top Bar - Excel Style */}
-              <div className="h-10 bg-[#2b2b2b] flex items-center justify-between px-4" style={{ borderRadius: '18px 18px 0 0' }}>
+              <div className="h-10 bg-[#2b2b2b] flex items-center justify-between px-4 rounded-t-2xl md:rounded-t-[18px]">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setSelectedProjectId(null)}
@@ -135,7 +130,7 @@ export default function Projects() {
                 }}
               >
                 {selectedProjectId === 1 ? (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Meta Information */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -156,7 +151,7 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
+                      className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
                       Building intelligence for market prediction.
                     </motion.h1>
@@ -166,7 +161,7 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.2 }}
-                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16"
+                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       MACHINE LEARNING + FINANCIAL MARKETS
                     </motion.p>
@@ -267,7 +262,7 @@ export default function Projects() {
                     </motion.p>
                   </div>
                 ) : selectedProjectId === 2 ? (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Meta Information */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -288,9 +283,9 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
+                      className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
-                      Building a mission-driven apparel brand.
+                      Built a mission-driven apparel brand.
                     </motion.h1>
 
                     {/* Subtitle */}
@@ -298,7 +293,7 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.2 }}
-                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16"
+                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       BRAND STRATEGY + OPERATIONS
                     </motion.p>
@@ -323,7 +318,7 @@ export default function Projects() {
                       </h2>
                       <div className="text-[16px] leading-[1.8] text-gray-700 font-light space-y-3">
                         <p>
-                          Launching a new apparel brand in a saturated market requires more than just product development. It requires clear brand positioning, operational efficiency, and the ability to connect with an audience that shares the brand's values.
+                          Launching a new apparel brand in a saturated market required more than product development. It demanded clear brand positioning, operational efficiency, and the ability to connect with an audience that shared the brand's values.
                         </p>
                         <p>
                           The challenge was building Kuzo from concept to execution: defining the brand identity, sourcing quality materials, managing production, and creating a go-to-market strategy that resonated with our target audience.
@@ -346,7 +341,7 @@ export default function Projects() {
                           I led a small team to build Kuzo as a mission-driven brand focused on quality, sustainability, and purpose. We developed a clear brand narrative that connected with our audience's values, emphasizing craftsmanship and ethical production.
                         </p>
                         <p>
-                          I managed end-to-end operations including supplier sourcing, quality control, inventory management, and logistics. This required coordinating across vendors, negotiating pricing, and ensuring product delivery timelines aligned with launch schedules.
+                          I managed end-to-end operations including supplier sourcing, quality control, inventory management, and logistics. This involved coordinating across vendors, negotiating pricing, and ensuring product delivery timelines aligned with launch schedules.
                         </p>
                         <p>
                           On the marketing side, I led digital campaigns across social media, email, and content platforms. We built a community around the brand, engaging customers through storytelling and transparent communication about our mission and values.
@@ -366,16 +361,16 @@ export default function Projects() {
                       </h2>
                       <div className="space-y-4 text-[16px] leading-[1.8] text-gray-700 font-light">
                         <p>
-                          • Successfully launched a mission-driven apparel brand from concept to market
+                          • Launched a mission-driven apparel brand from concept to market
                         </p>
                         <p>
                           • Built and led a small team through brand development, production, and marketing
                         </p>
                         <p>
-                          • Managed supplier relationships and operational logistics across the product lifecycle
+                          • Managed supplier relationships and operational logistics across the full product lifecycle
                         </p>
                         <p>
-                          • Developed hands-on experience in entrepreneurship, branding, and team leadership
+                          • Gained hands-on experience in entrepreneurship, branding, and team leadership
                         </p>
                       </div>
                     </motion.div>
@@ -399,7 +394,7 @@ export default function Projects() {
                     </motion.p>
                   </div>
                 ) : (
-                  <div className="max-w-3xl mx-auto px-12 py-20 text-center">
+                  <div className="max-w-3xl mx-auto px-5 py-12 md:px-12 md:py-20 text-center">
                     <p className="text-lg font-mono text-gray-500">Content loading...</p>
                   </div>
                 )}

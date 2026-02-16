@@ -7,10 +7,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-retro-bg text-retro-text;
+    overflow-x: hidden;
     font-family: 'Inter', 'SF Pro Display', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

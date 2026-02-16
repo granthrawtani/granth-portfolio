@@ -51,17 +51,17 @@ const timelineItems = [
 
 export default function About() {
   return (
-    <div className="min-h-screen px-16 py-24">
+    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-5xl font-normal text-retro-text mb-16 tracking-tight">About</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-tight">About</h1>
 
         {/* About Me Section */}
-        <div className="grid md:grid-cols-2 gap-12 mb-24">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-24">
           {/* Photo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -87,7 +87,7 @@ export default function About() {
             transition={{ delay: 0.3 }}
             className="flex items-center"
           >
-            <div className="text-gray-600 text-lg leading-relaxed space-y-6">
+            <div className="text-gray-600 text-base md:text-lg leading-relaxed space-y-5 md:space-y-6">
               <p>
                 I'm Granth Rawtani. I grew up between India and Congo with my parents, my brother, and our golden retriever, moving frequently and experiencing different cultures from a young age. That upbringing gave me a global perspective, strong adaptability, and a natural curiosity about how things work and how they can be improved.
               </p>
@@ -105,17 +105,17 @@ export default function About() {
         </div>
 
         {/* Separator Line */}
-        <div className="border-t border-retro-border my-16" />
+        <div className="border-t border-retro-border my-10 md:my-16" />
 
         {/* Timeline Section */}
         <div>
-          <h2 className="text-2xl font-normal text-retro-green mb-12 tracking-tight">Timeline</h2>
+          <h2 className="text-xl md:text-2xl font-normal text-retro-green mb-8 md:mb-12 tracking-tight">Timeline</h2>
           
           <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-retro-border" />
+          <div className="absolute left-5 md:left-8 top-0 bottom-0 w-0.5 bg-retro-border" />
 
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {timelineItems.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -124,18 +124,18 @@ export default function About() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="relative pl-24"
+                  className="relative pl-16 md:pl-24"
                 >
                   {/* Icon Marker */}
-                  <div className="absolute left-0 top-0 w-16 h-16 flex items-center justify-center">
-                    <div className="w-10 h-10 rounded-full bg-white border-2 border-retro-green flex items-center justify-center z-10">
+                  <div className="absolute left-0 top-0 w-10 h-10 md:w-16 md:h-16 flex items-center justify-center">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white border-2 border-retro-green flex items-center justify-center z-10">
                       <Icon size={18} className="text-retro-green" strokeWidth={1.5} />
                     </div>
                   </div>
 
                   {/* Content */}
                   <div>
-                    <h3 className="text-xl font-semibold text-retro-text mb-1">
+                    <h3 className="text-base md:text-xl font-semibold text-retro-text mb-1">
                       {item.title}
                     </h3>
                     {item.subtitle && (
@@ -162,10 +162,10 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="mt-32 mb-24"
+          className="mt-16 mb-12 md:mt-32 md:mb-24"
         >
-          <h1 className="text-5xl font-normal text-retro-text mb-16 tracking-tight">My Journey</h1>
-          <div className="text-gray-600 text-lg leading-relaxed space-y-6">
+          <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-tight">My Journey</h1>
+          <div className="text-gray-600 text-base md:text-lg leading-relaxed space-y-5 md:space-y-6">
             <p>
               I grew up around business.
             </p>

@@ -98,21 +98,21 @@ export default function Experience() {
   }, [selectedExperienceId, selectedInvestmentId]);
 
   return (
-    <div className="min-h-screen px-16 py-24">
+    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="max-w-5xl mx-auto"
       >
-        <h1 className="text-5xl font-normal text-retro-text mb-4 tracking-tight">Experience</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-tight">Experience</h1>
 
         <p className="text-gray-500 text-base leading-relaxed mb-12 max-w-[600px]">
           Finance, strategy, and market expansion across global environments.
         </p>
 
         {/* Experience Grid */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {experiences.map((exp, index) => {
             const isHovered = hoveredId === exp.id;
 
@@ -165,7 +165,7 @@ export default function Experience() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-retro-border my-32" />
+        <div className="border-t border-retro-border my-16 md:my-32" />
 
         {/* Investment Notes Section */}
         <motion.div
@@ -173,7 +173,7 @@ export default function Experience() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          <h2 className="text-5xl font-normal text-retro-text mb-4 tracking-tight">Investment Notes</h2>
+          <h2 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-tight">Investment Notes</h2>
 
           <p className="text-gray-500 text-base leading-relaxed mb-16 max-w-[600px]">
             Capital allocation, risk management, and long-term portfolio strategy.
@@ -327,19 +327,14 @@ export default function Experience() {
               animate={{ opacity: 1, x: '-50%', y: 0 }}
               exit={{ opacity: 0, x: '-50%', y: '120%' }}
               transition={{ duration: 0.55, ease: 'easeOut' }}
-              className="fixed z-50 bg-white overflow-hidden"
+              className="fixed z-50 bg-white overflow-hidden w-full md:w-[98vw] md:max-w-[1800px] h-[95vh] md:h-[88vh] rounded-t-2xl md:rounded-t-[18px] shadow-2xl"
               style={{
                 left: '50%',
                 bottom: 0,
-                width: '98vw',
-                maxWidth: '1800px',
-                height: '88vh',
-                borderRadius: '18px 18px 0 0',
-                boxShadow: '0 8px 40px rgba(0, 0, 0, 0.15)',
               }}
             >
               {/* Top Bar - Excel Style */}
-              <div className="h-10 bg-[#2b2b2b] flex items-center justify-between px-4" style={{ borderRadius: '18px 18px 0 0' }}>
+              <div className="h-10 bg-[#2b2b2b] flex items-center justify-between px-4 rounded-t-2xl md:rounded-t-[18px]">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => {
@@ -375,7 +370,7 @@ export default function Experience() {
               >
                 {/* Experience Modals - Check by ID */}
                 {selectedExperienceId === 4 ? (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -412,7 +407,7 @@ export default function Experience() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
+                      className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
                       Expanding heritage into new markets.
                     </motion.h1>
@@ -422,7 +417,7 @@ export default function Experience() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.2 }}
-                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16"
+                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       MARKET RESEARCH + BUSINESS STRATEGY
                     </motion.p>
@@ -524,7 +519,7 @@ export default function Experience() {
                   </div>
                 ) : selectedExperienceId === 2 ? (
                   /* Kenny's Group Premium Case Study */
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -561,7 +556,7 @@ export default function Experience() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-5xl font-bold leading-tight mb-6"
+                      className="text-3xl md:text-5xl font-bold leading-tight mb-6"
                     >
                       Driving clarity through financial strategy.
                     </motion.h1>
@@ -652,7 +647,7 @@ export default function Experience() {
                   </div>
                 ) : selectedExperienceId === 5 ? (
                   /* RawBank Premium Case Study */
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -689,7 +684,7 @@ export default function Experience() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-5xl font-bold leading-tight mb-6"
+                      className="text-3xl md:text-5xl font-bold leading-tight mb-6"
                     >
                       Launching fintech through digital strategy.
                     </motion.h1>
@@ -785,7 +780,7 @@ export default function Experience() {
                   </div>
                 ) : selectedExperienceId === 3 ? (
                   /* KRChoksey Premium Case Study */
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -822,7 +817,7 @@ export default function Experience() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-5xl font-bold leading-tight mb-6"
+                      className="text-3xl md:text-5xl font-bold leading-tight mb-6"
                     >
                       Translating market signals into investment strategy.
                     </motion.h1>
@@ -921,7 +916,7 @@ export default function Experience() {
                   </div>
                 ) : selectedExperienceId === 1 ? (
                   /* LMU Premium Case Study */
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -958,7 +953,7 @@ export default function Experience() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-5xl font-bold leading-tight mb-6"
+                      className="text-3xl md:text-5xl font-bold leading-tight mb-6"
                     >
                       Ensuring rigor and integrity in academic research.
                     </motion.h1>
@@ -1056,7 +1051,7 @@ export default function Experience() {
                   </div>
                 ) : selectedExperienceId === 6 ? (
                   /* YOUR COMPANY Special Card */
-                  <div className="flex items-center justify-center h-full px-12">
+                  <div className="flex items-center justify-center h-full px-5 md:px-12">
                     <div className="text-center">
                       <h3 className="text-5xl font-bold font-mono text-retro-green tracking-tight mb-4">
                         YOUR COMPANY
@@ -1067,12 +1062,12 @@ export default function Experience() {
                     </div>
                   </div>
                 ) : selectedInvestmentId === 101 ? (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     <p className="text-xs uppercase tracking-widest text-gray-500 font-light mb-8">Investment Memo</p>
-                    <h1 className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight">
                       How I Would Allocate $1M in Today's Market
                     </h1>
-                    <p className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16">
+                    <p className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16">
                       PORTFOLIO STRATEGY + ASSET ALLOCATION
                     </p>
                     <div className="w-full h-px bg-gray-200 mb-12" />
@@ -1198,12 +1193,12 @@ export default function Experience() {
                     </div>
                   </div>
                 ) : selectedInvestmentId === 102 ? (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     <p className="text-xs uppercase tracking-widest text-gray-500 font-light mb-8">Investment Memo</p>
-                    <h1 className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight">
                       Risk Management in Emerging Markets
                     </h1>
-                    <p className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16">
+                    <p className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16">
                       GLOBAL ALLOCATION + RISK FRAMEWORK
                     </p>
                     <div className="w-full h-px bg-gray-200 mb-12" />
@@ -1354,12 +1349,12 @@ export default function Experience() {
                     </div>
                   </div>
                 ) : selectedInvestmentId === 103 ? (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     <p className="text-xs uppercase tracking-widest text-gray-500 font-light mb-8">Investment Memo</p>
-                    <h1 className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight">
                       Interest Rates, Inflation, and Long-Term Positioning
                     </h1>
-                    <p className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16">
+                    <p className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16">
                       MACRO REGIME + PORTFOLIO POSITIONING
                     </p>
                     <div className="w-full h-px bg-gray-200 mb-12" />
@@ -1478,7 +1473,7 @@ export default function Experience() {
                     </div>
                   </div>
                 ) : (
-                  <div className="max-w-3xl mx-auto px-12 py-20 text-center">
+                  <div className="max-w-3xl mx-auto px-5 py-12 md:px-12 md:py-20 text-center">
                     <p className="text-lg font-mono text-gray-500">Content loading...</p>
                   </div>
                 )}

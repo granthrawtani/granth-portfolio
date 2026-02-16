@@ -71,14 +71,14 @@ export default function InvestmentNotes() {
   }, [selectedId]);
 
   return (
-    <div className="min-h-screen px-16 py-24">
+    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="max-w-5xl mx-auto"
       >
-        <h1 className="text-5xl font-normal text-retro-text mb-4 tracking-tight">Investment Notes</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-tight">Investment Notes</h1>
 
         <p className="text-gray-500 text-base leading-relaxed mb-16 max-w-[600px]">
           Capital allocation, risk management, and long-term portfolio strategy.
@@ -204,18 +204,13 @@ export default function InvestmentNotes() {
               animate={{ opacity: 1, x: '-50%', y: 0 }}
               exit={{ opacity: 0, x: '-50%', y: '120%' }}
               transition={{ duration: 0.55, ease: 'easeOut' }}
-              className="fixed z-50 bg-white overflow-hidden"
+              className="fixed z-50 bg-white overflow-hidden w-full md:w-[98vw] md:max-w-[1800px] h-[95vh] md:h-[88vh] rounded-t-2xl md:rounded-t-[18px] shadow-2xl"
               style={{
                 left: '50%',
                 bottom: 0,
-                width: '98vw',
-                maxWidth: '1800px',
-                height: '88vh',
-                borderRadius: '18px 18px 0 0',
-                boxShadow: '0 8px 40px rgba(0, 0, 0, 0.15)',
               }}
             >
-              <div className="h-10 bg-[#2b2b2b] flex items-center justify-between px-4" style={{ borderRadius: '18px 18px 0 0' }}>
+              <div className="h-10 bg-[#2b2b2b] flex items-center justify-between px-4 rounded-t-2xl md:rounded-t-[18px]">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setSelectedId(null)}
@@ -243,7 +238,7 @@ export default function InvestmentNotes() {
                 }}
               >
                 {selectedNote.id === 1 ? (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -259,7 +254,7 @@ export default function InvestmentNotes() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.1 }}
-                      className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
+                      className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
                       How I Would Allocate $1M in Today's Market
                     </motion.h1>
@@ -268,7 +263,7 @@ export default function InvestmentNotes() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16"
+                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       PORTFOLIO STRATEGY + RISK FRAMEWORK
                     </motion.p>
@@ -382,7 +377,7 @@ export default function InvestmentNotes() {
                     </motion.p>
                   </div>
                 ) : selectedNote.id === 2 ? (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -398,7 +393,7 @@ export default function InvestmentNotes() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.1 }}
-                      className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
+                      className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
                       Risk Management in Emerging Markets
                     </motion.h1>
@@ -407,7 +402,7 @@ export default function InvestmentNotes() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16"
+                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       PORTFOLIO STRATEGY + RISK FRAMEWORK
                     </motion.p>
@@ -521,7 +516,7 @@ export default function InvestmentNotes() {
                     </motion.p>
                   </div>
                 ) : (
-                  <div className="max-w-[900px] mx-auto px-12 py-16">
+                  <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -537,7 +532,7 @@ export default function InvestmentNotes() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.1 }}
-                      className="text-5xl md:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
+                      className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
                       Interest Rates, Inflation, and Long-Term Positioning
                     </motion.h1>
@@ -546,7 +541,7 @@ export default function InvestmentNotes() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.15 }}
-                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-16"
+                      className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       PORTFOLIO STRATEGY + RISK FRAMEWORK
                     </motion.p>

@@ -61,7 +61,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
             dragElastic={0.2}
             onDragEnd={handleDragEnd}
             style={{ y, opacity }}
-            className="fixed bottom-0 left-0 right-0 h-[88vh] bg-white rounded-t-3xl shadow-2xl z-50 overflow-hidden"
+            className="fixed bottom-0 left-0 right-0 h-[95vh] md:h-[88vh] bg-white rounded-t-2xl md:rounded-t-3xl shadow-2xl z-50 overflow-hidden"
           >
             {/* Drag Handle */}
             <div className="absolute top-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-gray-300 rounded-full" />
@@ -75,7 +75,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
             </button>
 
             {/* Content */}
-            <div className="h-full overflow-y-auto pt-12 px-8 pb-8">
+            <div className="h-full overflow-y-auto pt-12 px-5 pb-6 md:px-8 md:pb-8">
               {children}
             </div>
           </motion.div>

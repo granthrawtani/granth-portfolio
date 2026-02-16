@@ -13,14 +13,14 @@ const skills = [
 
 export default function Skills() {
   return (
-    <div className="min-h-screen px-16 py-24">
+    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-5xl font-normal text-retro-text mb-16 tracking-tight">Skills</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-tight">Skills</h1>
 
         <div className="flex flex-wrap gap-4">
           {skills.map((skill, index) => (

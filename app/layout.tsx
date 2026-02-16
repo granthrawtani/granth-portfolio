@@ -3,7 +3,7 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
-  title: "Granth Rawtani",
+  title: "Granth Rawtani | Portfolio",
   description:
     "Entrepreneur and builder exploring startups, technology, and ideas that create leverage.",
   metadataBase: new URL("https://granthrawtani.com"),
@@ -45,7 +45,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Sidebar />
-        <main className="ml-[230px] min-h-screen">
+        <main className="md:ml-[230px] pt-14 md:pt-0 min-h-screen">
           {children}
         </main>
       </body>
