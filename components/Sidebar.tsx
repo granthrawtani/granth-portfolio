@@ -24,7 +24,7 @@ function NavLink({ item, isActive }: { item: { name: string; href: string; icon:
   const className = `
     flex items-center gap-3 px-6 py-3.5
     text-[11px] font-medium font-mono tracking-wider
-    transition-all duration-200 relative
+    transition-all duration-[200ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] relative
     ${isActive
       ? 'text-retro-text bg-gray-200/50'
       : 'text-gray-700 hover:text-retro-text hover:translate-x-0.5'
@@ -144,15 +144,15 @@ export default function Sidebar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+              className="absolute inset-0 bg-black/15 backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
-              initial={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
               className="absolute top-14 left-0 right-0 bg-retro-sidebar border-b border-retro-border shadow-card-hover"
             >
               <nav className="py-3">

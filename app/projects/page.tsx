@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 
+const ease = [0.25, 0.1, 0.25, 1] as const;
+
 const projects = [
   {
     id: 1,
@@ -41,16 +43,16 @@ export default function Projects() {
   }, [selectedProjectId]);
 
   return (
-    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
+    <div className="min-h-screen px-5 py-14 md:px-16 md:py-28">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7, ease }}
         className="max-w-6xl mx-auto"
       >
         <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-[-0.02em]">Projects</h1>
 
-        <p className="text-gray-500 text-base leading-[1.7] mb-12 max-w-[600px]">
+        <p className="text-gray-500 text-base leading-[1.75] mb-14 max-w-[600px]">
           Things I've built — from concept through execution.
         </p>
 
@@ -61,17 +63,16 @@ export default function Projects() {
             return (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: index * 0.05, duration: 0.4 }}
-                whileHover={{ y: -4 }}
+                transition={{ delay: index * 0.06, duration: 0.5, ease }}
                 className={`
                   border rounded-xl cursor-pointer
-                  transition-all duration-200
+                  transition-all duration-[250ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]
                   flex flex-col justify-between
                   p-6 md:p-8 min-h-[240px]
-                  ${isHovered ? 'bg-gray-50 shadow-card-hover border-retro-border' : 'bg-white shadow-card border-retro-border/80'}
+                  ${isHovered ? 'bg-gray-50/80 shadow-card-hover border-retro-border -translate-y-0.5' : 'bg-white shadow-card border-retro-border/80'}
                 `}
                 onMouseEnter={() => setHoveredId(project.id)}
                 onMouseLeave={() => setHoveredId(null)}
@@ -113,17 +114,17 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.35 }}
-              className="fixed inset-0 bg-black/25 z-40"
+              transition={{ duration: 0.3, ease }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-40"
               onClick={() => setSelectedProjectId(null)}
             />
 
             {/* Excel Window - Docked to Bottom */}
             <motion.div
-              initial={{ opacity: 0, x: '-50%', y: '120%' }}
+              initial={{ opacity: 0, x: '-50%', y: '100%' }}
               animate={{ opacity: 1, x: '-50%', y: 0 }}
-              exit={{ opacity: 0, x: '-50%', y: '120%' }}
-              transition={{ duration: 0.55, ease: 'easeOut' }}
+              exit={{ opacity: 0, x: '-50%', y: '100%' }}
+              transition={{ duration: 0.5, ease }}
               className="fixed z-50 bg-white overflow-hidden w-full md:w-[98vw] md:max-w-[1800px] h-[95vh] md:h-[88vh] rounded-t-2xl md:rounded-t-[18px] shadow-2xl"
               style={{
                 left: '50%',
@@ -163,9 +164,9 @@ export default function Projects() {
                   <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Meta Information */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
+                      transition={{ duration: 0.5, ease, delay: 0.08 }}
                       className="mb-8"
                     >
                       <p className="text-xs uppercase tracking-widest text-gray-500 font-light">
@@ -178,9 +179,9 @@ export default function Projects() {
 
                     {/* Headline */}
                     <motion.h1
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.15 }}
+                      transition={{ duration: 0.5, ease, delay: 0.12 }}
                       className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
                       Built an ML platform for market prediction.
@@ -190,7 +191,7 @@ export default function Projects() {
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
+                      transition={{ duration: 0.5, ease, delay: 0.16 }}
                       className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       MACHINE LEARNING + FINANCIAL MARKETS
@@ -200,15 +201,15 @@ export default function Projects() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.25 }}
+                      transition={{ duration: 0.7, ease, delay: 0.2 }}
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
                     {/* The Problem */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.3 }}
+                      transition={{ duration: 0.5, ease, delay: 0.24 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -223,9 +224,9 @@ export default function Projects() {
 
                     {/* What I Built */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 }}
+                      transition={{ duration: 0.5, ease, delay: 0.28 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -243,9 +244,9 @@ export default function Projects() {
 
                     {/* Outcome */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
+                      transition={{ duration: 0.5, ease, delay: 0.32 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -262,7 +263,7 @@ export default function Projects() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.45 }}
+                      transition={{ duration: 0.7, ease, delay: 0.36 }}
                       className="w-full h-px bg-gray-200 mt-16 mb-8 origin-left"
                     />
 
@@ -270,7 +271,7 @@ export default function Projects() {
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 }}
+                      transition={{ duration: 0.5, ease, delay: 0.4 }}
                       className="text-xs uppercase tracking-[0.2em] text-gray-400 font-light text-center"
                     >
                       AI Stock Predictor — 2025
@@ -280,9 +281,9 @@ export default function Projects() {
                   <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Meta Information */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
+                      transition={{ duration: 0.5, ease, delay: 0.08 }}
                       className="mb-8"
                     >
                       <p className="text-xs uppercase tracking-widest text-gray-500 font-light">
@@ -295,9 +296,9 @@ export default function Projects() {
 
                     {/* Headline */}
                     <motion.h1
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.15 }}
+                      transition={{ duration: 0.5, ease, delay: 0.12 }}
                       className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
                       Launched an apparel brand from zero.
@@ -307,7 +308,7 @@ export default function Projects() {
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
+                      transition={{ duration: 0.5, ease, delay: 0.16 }}
                       className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       BRAND STRATEGY + OPERATIONS
@@ -317,15 +318,15 @@ export default function Projects() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.25 }}
+                      transition={{ duration: 0.7, ease, delay: 0.2 }}
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
                     {/* The Problem */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.3 }}
+                      transition={{ duration: 0.5, ease, delay: 0.24 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -340,9 +341,9 @@ export default function Projects() {
 
                     {/* What I Did */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 }}
+                      transition={{ duration: 0.5, ease, delay: 0.28 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -360,9 +361,9 @@ export default function Projects() {
 
                     {/* Outcome */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
+                      transition={{ duration: 0.5, ease, delay: 0.32 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -379,7 +380,7 @@ export default function Projects() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.45 }}
+                      transition={{ duration: 0.7, ease, delay: 0.36 }}
                       className="w-full h-px bg-gray-200 mt-16 mb-8 origin-left"
                     />
 
@@ -387,7 +388,7 @@ export default function Projects() {
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 }}
+                      transition={{ duration: 0.5, ease, delay: 0.4 }}
                       className="text-xs uppercase tracking-[0.2em] text-gray-400 font-light text-center"
                     >
                       Kuzo — 2023

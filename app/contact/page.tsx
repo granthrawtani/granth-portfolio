@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone } from 'lucide-react';
 
+const ease = [0.25, 0.1, 0.25, 1];
+
 const contacts = [
   {
     icon: Mail,
@@ -20,34 +22,38 @@ const contacts = [
 
 export default function Contact() {
   return (
-    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
+    <div className="min-h-screen px-5 py-14 md:px-16 md:py-28">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7, ease }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-[-0.02em]">Contact</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-12 md:mb-20 tracking-[-0.02em]">Contact</h1>
 
-        <div className="space-y-8 max-w-xl">
+        <div className="space-y-10 max-w-xl">
           {contacts.map((contact, index) => {
             const Icon = contact.icon;
             return (
               <motion.a
                 key={contact.label}
                 href={contact.href}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: index * 0.1, duration: 0.4 }}
-                className="flex items-center gap-4 text-retro-text hover:text-retro-green transition-colors duration-200 group min-h-[44px]"
+                transition={{ delay: index * 0.08, duration: 0.5, ease }}
+                className="flex items-center gap-4 text-retro-text hover:text-retro-green transition-colors duration-[200ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] group min-h-[44px]"
               >
-                <Icon size={20} strokeWidth={1.5} />
+                <Icon size={20} strokeWidth={1.5} className="transition-transform duration-[200ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:translate-x-0.5" />
                 <div>
-                  <div className="text-sm text-gray-500 font-mono tracking-wider uppercase">
+                  <div className="text-sm text-gray-500 font-mono tracking-wider uppercase mb-0.5">
                     {contact.label}
                   </div>
-                  <div className="text-lg group-hover:underline underline-offset-4 decoration-retro-green/40">{contact.value}</div>
+                  <div className="text-lg relative">
+                    <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-retro-green/40 after:transition-all after:duration-[250ms] after:ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:after:w-full">
+                      {contact.value}
+                    </span>
+                  </div>
                 </div>
               </motion.a>
             );

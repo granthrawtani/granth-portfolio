@@ -6,6 +6,8 @@ import { X } from 'lucide-react';
 import Image from 'next/image';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 
+const ease = [0.25, 0.1, 0.25, 1] as const;
+
 const experiences = [
   { id: 1, company: 'Loyola Marymount University', logo: '/logos/lmu.png', location: 'Los Angeles', year: '2026', isSpecial: false },
   { id: 2, company: "Kenny's Group", logo: '/logos/kennys.png', location: 'Kinshasa', year: '2025', isSpecial: false },
@@ -98,16 +100,16 @@ export default function Experience() {
   }, [selectedExperienceId, selectedInvestmentId]);
 
   return (
-    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
+    <div className="min-h-screen px-5 py-14 md:px-16 md:py-28">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7, ease }}
         className="max-w-5xl mx-auto"
       >
         <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-[-0.02em]">Experience</h1>
 
-        <p className="text-gray-500 text-base leading-[1.7] mb-12 max-w-[600px]">
+        <p className="text-gray-500 text-base leading-[1.75] mb-14 max-w-[600px]">
           Finance, strategy, and market expansion across global environments.
         </p>
 
@@ -119,17 +121,16 @@ export default function Experience() {
             return (
               <motion.div
                 key={exp.id}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: index * 0.05, duration: 0.4 }}
-                whileHover={{ y: -4 }}
+                transition={{ delay: index * 0.06, duration: 0.5, ease }}
                 className={`
                   border rounded-xl cursor-pointer
-                  transition-all duration-200
+                  transition-all duration-[250ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]
                   flex flex-col items-center justify-center
                   p-8 min-h-[200px]
-                  ${isHovered ? 'bg-gray-50 shadow-card-hover border-retro-border' : 'bg-white shadow-card border-retro-border/80'}
+                  ${isHovered ? 'bg-gray-50/80 shadow-card-hover border-retro-border -translate-y-0.5' : 'bg-white shadow-card border-retro-border/80'}
                 `}
                 onMouseEnter={() => setHoveredId(exp.id)}
                 onMouseLeave={() => setHoveredId(null)}
@@ -166,17 +167,18 @@ export default function Experience() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-retro-border my-16 md:my-32" />
+        <div className="border-t border-retro-border my-20 md:my-36" />
 
         {/* Investment Notes Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease }}
         >
           <h2 className="text-3xl md:text-5xl font-normal text-retro-text mb-4 tracking-[-0.02em]">Investment Notes</h2>
 
-          <p className="text-gray-500 text-base leading-[1.7] mb-16 max-w-[600px]">
+          <p className="text-gray-500 text-base leading-[1.75] mb-16 max-w-[600px]">
             Capital allocation, risk management, and long-term portfolio strategy.
           </p>
 
@@ -190,9 +192,9 @@ export default function Experience() {
             {/* Graph - Fade in on scroll */}
             <motion.div
               ref={graphRef}
-              initial={{ opacity: 0, y: 20 }}
-              animate={graphInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={graphInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ duration: 0.6, ease }}
               className="border border-retro-border rounded-xl bg-white p-8 pt-6 shadow-sm mb-16"
             >
               <ResponsiveContainer width="100%" height={320}>
@@ -259,9 +261,9 @@ export default function Experience() {
               {/* Foundation Block */}
               <motion.div
                 ref={foundationRef}
-                initial={{ opacity: 0, y: 15 }}
-                animate={foundationInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-                transition={{ duration: 0.35 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={foundationInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                transition={{ duration: 0.5, ease }}
               >
                 <h4 className="text-xs uppercase tracking-widest text-retro-green font-medium mb-3">
                   Foundation
@@ -274,9 +276,9 @@ export default function Experience() {
               {/* Reassessment Block */}
               <motion.div
                 ref={reassessmentRef}
-                initial={{ opacity: 0, y: 15 }}
-                animate={reassessmentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-                transition={{ duration: 0.35 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={reassessmentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                transition={{ duration: 0.5, ease }}
               >
                 <h4 className="text-xs uppercase tracking-widest text-retro-green font-medium mb-3">
                   Reassessment
@@ -289,9 +291,9 @@ export default function Experience() {
               {/* Conviction Block */}
               <motion.div
                 ref={convictionRef}
-                initial={{ opacity: 0, y: 15 }}
-                animate={convictionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-                transition={{ duration: 0.35 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={convictionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                transition={{ duration: 0.5, ease }}
               >
                 <h4 className="text-xs uppercase tracking-widest text-retro-green font-medium mb-3">
                   Conviction
@@ -314,8 +316,8 @@ export default function Experience() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.35 }}
-              className="fixed inset-0 bg-black/25 z-40"
+              transition={{ duration: 0.3, ease }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-40"
               onClick={() => {
                 setSelectedExperienceId(null);
                 setSelectedInvestmentId(null);
@@ -324,10 +326,10 @@ export default function Experience() {
 
             {/* Excel Window - Docked to Bottom */}
             <motion.div
-              initial={{ opacity: 0, x: '-50%', y: '120%' }}
+              initial={{ opacity: 0, x: '-50%', y: '100%' }}
               animate={{ opacity: 1, x: '-50%', y: 0 }}
-              exit={{ opacity: 0, x: '-50%', y: '120%' }}
-              transition={{ duration: 0.55, ease: 'easeOut' }}
+              exit={{ opacity: 0, x: '-50%', y: '100%' }}
+              transition={{ duration: 0.5, ease }}
               className="fixed z-50 bg-white overflow-hidden w-full md:w-[98vw] md:max-w-[1800px] h-[95vh] md:h-[88vh] rounded-t-2xl md:rounded-t-[18px] shadow-2xl"
               style={{
                 left: '50%',
@@ -374,9 +376,9 @@ export default function Experience() {
                   <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.5, ease }}
                       className="mb-12 flex justify-center"
                     >
                       <Image
@@ -392,7 +394,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
+                      transition={{ duration: 0.5, ease, delay: 0.08 }}
                       className="mb-8"
                     >
                       <p className="text-xs uppercase tracking-widest text-gray-500 font-light">
@@ -407,7 +409,7 @@ export default function Experience() {
                     <motion.h1
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.15 }}
+                      transition={{ duration: 0.5, ease, delay: 0.12 }}
                       className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6 tracking-tight"
                     >
                       Expanding heritage into new markets.
@@ -417,7 +419,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
+                      transition={{ duration: 0.5, ease, delay: 0.16 }}
                       className="text-xs uppercase tracking-[0.2em] text-gray-600 font-light mb-10 md:mb-16"
                     >
                       MARKET RESEARCH + BUSINESS STRATEGY
@@ -427,7 +429,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.25 }}
+                      transition={{ duration: 0.7, ease, delay: 0.2 }}
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
@@ -435,7 +437,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.3 }}
+                      transition={{ duration: 0.5, ease, delay: 0.24 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -455,7 +457,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 }}
+                      transition={{ duration: 0.5, ease, delay: 0.28 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -478,7 +480,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
+                      transition={{ duration: 0.5, ease, delay: 0.32 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm uppercase tracking-[0.15em] mb-4 font-medium text-retro-green">
@@ -504,7 +506,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.45 }}
+                      transition={{ duration: 0.7, ease, delay: 0.36 }}
                       className="w-full h-px bg-gray-200 mt-16 mb-8 origin-left"
                     />
 
@@ -512,7 +514,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 }}
+                      transition={{ duration: 0.5, ease, delay: 0.4 }}
                       className="text-xs uppercase tracking-[0.2em] text-gray-400 font-light text-center"
                     >
                       Ulysse Nardin — Dubai, 2022
@@ -523,9 +525,9 @@ export default function Experience() {
                   <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.5, ease }}
                       className="mb-12 flex justify-center"
                     >
                       <Image
@@ -541,7 +543,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
+                      transition={{ duration: 0.5, ease, delay: 0.08 }}
                       className="mb-8"
                     >
                       <p className="text-sm tracking-widest uppercase text-gray-500">
@@ -556,7 +558,7 @@ export default function Experience() {
                     <motion.h1
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.15 }}
+                      transition={{ duration: 0.5, ease, delay: 0.12 }}
                       className="text-3xl md:text-5xl font-bold leading-tight mb-6"
                     >
                       Driving clarity through financial strategy.
@@ -566,7 +568,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
+                      transition={{ duration: 0.5, ease, delay: 0.16 }}
                       className="text-sm tracking-[0.3em] uppercase text-gray-400 mb-10"
                     >
                       FINANCIAL ANALYSIS + OPERATIONAL STRATEGY
@@ -576,7 +578,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.25 }}
+                      transition={{ duration: 0.7, ease, delay: 0.2 }}
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
@@ -584,7 +586,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.3 }}
+                      transition={{ duration: 0.5, ease, delay: 0.24 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -599,7 +601,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 }}
+                      transition={{ duration: 0.5, ease, delay: 0.28 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -614,7 +616,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
+                      transition={{ duration: 0.5, ease, delay: 0.32 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -632,7 +634,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.45 }}
+                      transition={{ duration: 0.7, ease, delay: 0.36 }}
                       className="w-full h-px bg-gray-200 mt-16 mb-8 origin-left"
                     />
 
@@ -640,7 +642,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 }}
+                      transition={{ duration: 0.5, ease, delay: 0.4 }}
                       className="text-sm tracking-widest uppercase text-gray-400 text-center"
                     >
                       Kenny's Group — Kinshasa, 2025
@@ -651,9 +653,9 @@ export default function Experience() {
                   <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.5, ease }}
                       className="mb-12 flex justify-center"
                     >
                       <Image
@@ -669,7 +671,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
+                      transition={{ duration: 0.5, ease, delay: 0.08 }}
                       className="mb-8"
                     >
                       <p className="text-sm tracking-widest uppercase text-gray-500">
@@ -684,7 +686,7 @@ export default function Experience() {
                     <motion.h1
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.15 }}
+                      transition={{ duration: 0.5, ease, delay: 0.12 }}
                       className="text-3xl md:text-5xl font-bold leading-tight mb-6"
                     >
                       Launching fintech through digital strategy.
@@ -694,7 +696,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
+                      transition={{ duration: 0.5, ease, delay: 0.16 }}
                       className="text-sm tracking-[0.3em] uppercase text-gray-400 mb-10"
                     >
                       MARKETING + PRODUCT SUPPORT
@@ -704,7 +706,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.25 }}
+                      transition={{ duration: 0.7, ease, delay: 0.2 }}
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
@@ -712,7 +714,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.3 }}
+                      transition={{ duration: 0.5, ease, delay: 0.24 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -727,7 +729,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 }}
+                      transition={{ duration: 0.5, ease, delay: 0.28 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -747,7 +749,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
+                      transition={{ duration: 0.5, ease, delay: 0.32 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -765,7 +767,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.45 }}
+                      transition={{ duration: 0.7, ease, delay: 0.36 }}
                       className="w-full h-px bg-gray-200 mt-16 mb-8 origin-left"
                     />
 
@@ -773,7 +775,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 }}
+                      transition={{ duration: 0.5, ease, delay: 0.4 }}
                       className="text-sm tracking-widest uppercase text-gray-400 text-center"
                     >
                       RawBank — Kinshasa, 2021
@@ -784,9 +786,9 @@ export default function Experience() {
                   <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.5, ease }}
                       className="mb-12 flex justify-center"
                     >
                       <Image
@@ -802,7 +804,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
+                      transition={{ duration: 0.5, ease, delay: 0.08 }}
                       className="mb-8"
                     >
                       <p className="text-sm tracking-widest uppercase text-gray-500">
@@ -817,7 +819,7 @@ export default function Experience() {
                     <motion.h1
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.15 }}
+                      transition={{ duration: 0.5, ease, delay: 0.12 }}
                       className="text-3xl md:text-5xl font-bold leading-tight mb-6"
                     >
                       Translating market signals into investment strategy.
@@ -827,7 +829,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
+                      transition={{ duration: 0.5, ease, delay: 0.16 }}
                       className="text-sm tracking-[0.3em] uppercase text-gray-400 mb-10"
                     >
                       EQUITY RESEARCH + PORTFOLIO ANALYSIS
@@ -837,7 +839,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.25 }}
+                      transition={{ duration: 0.7, ease, delay: 0.2 }}
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
@@ -845,7 +847,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.3 }}
+                      transition={{ duration: 0.5, ease, delay: 0.24 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -860,7 +862,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 }}
+                      transition={{ duration: 0.5, ease, delay: 0.28 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -883,7 +885,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
+                      transition={{ duration: 0.5, ease, delay: 0.32 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -901,7 +903,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.45 }}
+                      transition={{ duration: 0.7, ease, delay: 0.36 }}
                       className="w-full h-px bg-gray-200 mt-16 mb-8 origin-left"
                     />
 
@@ -909,7 +911,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 }}
+                      transition={{ duration: 0.5, ease, delay: 0.4 }}
                       className="text-sm tracking-widest uppercase text-gray-400 text-center"
                     >
                       KRChoksey — Mumbai, 2025
@@ -920,9 +922,9 @@ export default function Experience() {
                   <div className="max-w-[900px] mx-auto px-5 py-10 md:px-12 md:py-16">
                     {/* Logo */}
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.5, ease }}
                       className="mb-12 flex justify-center"
                     >
                       <Image
@@ -938,7 +940,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
+                      transition={{ duration: 0.5, ease, delay: 0.08 }}
                       className="mb-8"
                     >
                       <p className="text-sm tracking-widest uppercase text-gray-500">
@@ -953,7 +955,7 @@ export default function Experience() {
                     <motion.h1
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.15 }}
+                      transition={{ duration: 0.5, ease, delay: 0.12 }}
                       className="text-3xl md:text-5xl font-bold leading-tight mb-6"
                     >
                       Ensuring rigor and integrity in academic research.
@@ -963,7 +965,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
+                      transition={{ duration: 0.5, ease, delay: 0.16 }}
                       className="text-sm tracking-[0.3em] uppercase text-gray-400 mb-10"
                     >
                       RESEARCH REVIEW + QUALITY CONTROL
@@ -973,7 +975,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.25 }}
+                      transition={{ duration: 0.7, ease, delay: 0.2 }}
                       className="w-full h-px bg-gray-200 mb-12 origin-left"
                     />
 
@@ -981,7 +983,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.3 }}
+                      transition={{ duration: 0.5, ease, delay: 0.24 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -996,7 +998,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 }}
+                      transition={{ duration: 0.5, ease, delay: 0.28 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -1019,7 +1021,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
+                      transition={{ duration: 0.5, ease, delay: 0.32 }}
                       className="mb-12"
                     >
                       <h2 className="text-sm tracking-widest uppercase mb-4 text-retro-green">
@@ -1036,7 +1038,7 @@ export default function Experience() {
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       animate={{ opacity: 1, scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.45 }}
+                      transition={{ duration: 0.7, ease, delay: 0.36 }}
                       className="w-full h-px bg-gray-200 mt-16 mb-8 origin-left"
                     />
 
@@ -1044,7 +1046,7 @@ export default function Experience() {
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 }}
+                      transition={{ duration: 0.5, ease, delay: 0.4 }}
                       className="text-sm tracking-widest uppercase text-gray-400 text-center"
                     >
                       Loyola Marymount University — Los Angeles, 2026

@@ -6,6 +6,8 @@ import Image from 'next/image';
 
 const BLUR_DATA_URL = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKAAoDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQIDBv/EACIQAAICAgICAgMAAAAAAAAAAAABAgMEEQUhEjFBURMiYf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A0nJ8xLHx3ZCEeT4+KcsezKlvxWl19gVXzHKW5FuyUpy+WBP/9k=';
 
+const ease = [0.25, 0.1, 0.25, 1];
+
 const timelineItems = [
   {
     id: 1,
@@ -55,23 +57,23 @@ const viewport = { once: true, amount: 0.3 };
 
 export default function About() {
   return (
-    <div className="min-h-screen px-5 py-12 md:px-16 md:py-24">
+    <div className="min-h-screen px-5 py-14 md:px-16 md:py-28">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7, ease }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-10 md:mb-16 tracking-[-0.02em]">About</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-retro-text mb-12 md:mb-20 tracking-[-0.02em]">About</h1>
 
         {/* About Me Section */}
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-24">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 mb-20 md:mb-28">
           {/* Photo */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, ease }}
           >
             <div className="aspect-[3/4] w-full max-w-md border border-retro-border rounded-3xl bg-white overflow-hidden shadow-card">
               <Image
@@ -89,13 +91,13 @@ export default function About() {
 
           {/* About Me Text */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.6, ease, delay: 0.1 }}
             className="flex items-center"
           >
-            <div className="text-gray-600 text-base md:text-lg leading-[1.7] space-y-5 md:space-y-6">
+            <div className="text-gray-600 text-base md:text-lg leading-[1.75] space-y-5 md:space-y-6 max-w-[540px]">
               <p>
                 I'm Granth Rawtani. I grew up between India and Congo with my parents, my brother, and our golden retriever, moving frequently and experiencing different cultures from a young age. That upbringing gave me a global perspective, strong adaptability, and a natural curiosity about how things work and how they can be improved.
               </p>
@@ -117,18 +119,18 @@ export default function About() {
           initial={{ opacity: 0, scaleX: 0 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={viewport}
-          transition={{ duration: 0.6 }}
-          className="border-t border-gray-300/50 my-10 md:my-16 origin-left"
+          transition={{ duration: 0.7, ease }}
+          className="border-t border-gray-300/50 my-12 md:my-20 origin-left"
         />
 
         {/* Timeline Section */}
         <div>
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
-            transition={{ duration: 0.4 }}
-            className="text-xl md:text-2xl font-normal text-retro-green mb-8 md:mb-12 tracking-tight"
+            transition={{ duration: 0.5, ease }}
+            className="text-xl md:text-2xl font-normal text-retro-green mb-10 md:mb-14 tracking-tight"
           >
             Timeline
           </motion.h2>
@@ -137,16 +139,16 @@ export default function About() {
           {/* Vertical Line */}
           <div className="absolute left-5 md:left-8 top-0 bottom-0 w-0.5 bg-retro-border" />
 
-          <div className="space-y-8 md:space-y-12">
+          <div className="space-y-10 md:space-y-14">
             {timelineItems.map((item, index) => {
               const Icon = item.icon;
               return (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  transition={{ duration: 0.5, ease, delay: index * 0.06 }}
                   className="relative pl-16 md:pl-24"
                 >
                   {/* Icon Marker */}
@@ -166,11 +168,11 @@ export default function About() {
                     )}
                     <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
                       {item.location && <span>{item.location}</span>}
-                      {item.location && item.date && <span>•</span>}
+                      {item.location && item.date && <span>·</span>}
                       <span>{item.date}</span>
                     </div>
                     {item.description && (
-                      <p className="text-gray-600 leading-[1.7]">{item.description}</p>
+                      <p className="text-gray-600 leading-[1.75] max-w-[540px]">{item.description}</p>
                     )}
                   </div>
                 </motion.div>
@@ -182,14 +184,14 @@ export default function About() {
 
         {/* My Journey Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
-          transition={{ duration: 0.5 }}
-          className="mt-16 mb-12 md:mt-32 md:mb-24"
+          transition={{ duration: 0.6, ease }}
+          className="mt-20 mb-14 md:mt-36 md:mb-28"
         >
-          <h2 className="text-xl md:text-2xl font-normal text-retro-text mb-8 md:mb-12 tracking-tight">My Journey</h2>
-          <div className="text-gray-600 text-base md:text-lg leading-[1.7] space-y-5 md:space-y-6">
+          <h2 className="text-xl md:text-2xl font-normal text-retro-text mb-10 md:mb-14 tracking-tight">My Journey</h2>
+          <div className="text-gray-600 text-base md:text-lg leading-[1.75] space-y-5 md:space-y-6 max-w-[600px]">
             <p>
               I grew up around business.
             </p>
